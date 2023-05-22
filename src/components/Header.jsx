@@ -11,9 +11,13 @@ const Header = () => {
     <nav className="w-full h-20 border-b border-solid border-emerald-400 flex items-center">
       <div className="flex justify-between items-center w-full container m-auto">
         <Link to="/" className="text-xl font-black">
-          Podcaster
+          <h1>Podcaster</h1>
         </Link>
-        <div>{isLoading ? "Loading" : "Ready"}</div>
+        <div>
+          {isLoading && (
+            <div className="loading w-6 h-6 bg-green-600 rounded-full" />
+          )}
+        </div>
       </div>
     </nav>
   );

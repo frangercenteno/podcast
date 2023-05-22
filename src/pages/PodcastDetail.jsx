@@ -1,13 +1,14 @@
 import CardEpisode from "../components/CardEpisode";
 import TableEpisodes from "../components/TableEpisodes";
 import LayoutEpisode from "../components/LayoutEpisode";
+import EmptyState from "../components/EmptyState";
 import useEpisodes from "../hooks/useEpisodes";
 
 const PodcastDetail = () => {
   const { resultCount, mainData, episodes, podcastId } = useEpisodes();
 
   if (!resultCount || !mainData || !episodes) {
-    return null;
+    return <EmptyState />;
   }
 
   return (

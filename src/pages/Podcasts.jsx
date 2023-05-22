@@ -1,5 +1,6 @@
 import { useState } from "react";
 import usePodcast from "../hooks/usePodcasts";
+import EmptyState from "../components/EmptyState";
 
 const Podcasts = () => {
   const [search, setSearch] = useState("");
@@ -7,7 +8,7 @@ const Podcasts = () => {
   const { podcasts } = usePodcast(search);
 
   if (!podcasts) {
-    return <div>Loading</div>;
+    return <EmptyState />;
   }
 
   return (
