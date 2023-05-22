@@ -1,5 +1,4 @@
 import { ENV } from "../../constants";
-import getPodcastById from "../../mocks/getPodcastById.json";
 import isLessThanADay from "../../utils/isLessThanADay";
 
 export async function fetchAllPodcast() {
@@ -24,11 +23,23 @@ export async function fetchAllPodcast() {
 
 export async function fetchPodcastById(id) {
   try {
-    // const response = await fetch(ENV.getUrlPodcastById(id));
-    // const result = response.json();
-    // return result;
-    console.log(getPodcastById);
-    return getPodcastById.feed;
+    const podcastLocalStorage = localStorage.getItem("ALL_EPISODES");
+    const getDataByIdOnLocalStorage = JSON.parse(podcastLocalStorage);
+    if (
+      getDataByIdOnLocalStorage &&
+      getDataByIdOnLocalStorage[id] &&
+      isLessThanADay(getDataByIdOnLocalStorage[id].date)
+    ) {
+      return getDataByIdOnLocalStorage[id].result;
+    }
+    const response = await fetch(ENV.getUrlPodcastById(id));
+    const result = await response.json();
+    const dataToSaveLocalStorage = { [id]: { result, date: new Date() } };
+    localStorage.setItem(
+      "ALL_EPISODES",
+      JSON.stringify(dataToSaveLocalStorage)
+    );
+    return result;
   } catch (error) {
     console.error(error);
   }

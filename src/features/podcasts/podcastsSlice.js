@@ -7,10 +7,10 @@ const initialState = {
     status: "idle",
   },
   podcastSelected: {
-    podcast: "",
+    podcast: {},
     status: "idle",
   },
-  episode: "",
+  episode: {},
 };
 
 export const getPodcasts = createAsyncThunk(
@@ -25,7 +25,7 @@ export const getPodcastById = createAsyncThunk(
   "podcasts/getPodcastById",
   async (id) => {
     const response = await fetchPodcastById(id);
-    return response.data;
+    return response;
   }
 );
 
@@ -51,6 +51,16 @@ export const podcastSlice = createSlice({
       })
       .addCase(getPodcasts.rejected, (state) => {
         state.podcasts.status = "failed";
+      })
+      .addCase(getPodcastById.pending, (state) => {
+        state.podcastSelected.status = "loading";
+      })
+      .addCase(getPodcastById.fulfilled, (state, action) => {
+        state.podcastSelected.status = "idle";
+        state.podcastSelected.podcast = action.payload;
+      })
+      .addCase(getPodcastById.rejected, (state) => {
+        state.podcastSelected.status = "failed";
       });
   },
 });

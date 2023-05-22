@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useAppSelector } from "../hooks/useAppSelector";
 
 const Header = () => {
@@ -9,7 +10,9 @@ const Header = () => {
   return (
     <nav className="w-full h-20 border-b border-solid border-emerald-400 flex items-center">
       <div className="flex justify-between items-center w-full container m-auto">
-        <h1 className="text-xl font-black">Podcaster</h1>
+        <Link to="/" className="text-xl font-black">
+          Podcaster
+        </Link>
         <div>{isLoading ? "Loading" : "Ready"}</div>
       </div>
     </nav>
