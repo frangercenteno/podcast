@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 import humanizeDate from "../utils/humanizeDate";
 import humanizeTime from "../utils/humanizeTime";
@@ -49,6 +50,11 @@ const TableEpisodes = ({ episodes, podcastId }) => {
       </table>
     </div>
   );
+};
+
+TableEpisodes.propTypes = {
+  podcastId: PropTypes.number,
+  episodes: PropTypes.arrayOf(Object),
 };
 
 export default TableEpisodes;

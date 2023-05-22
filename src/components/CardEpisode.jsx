@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 const CardEpisode = ({ data }) => {
   return (
     <article className="max-w-xs shadow">
@@ -22,6 +24,10 @@ const CardEpisode = ({ data }) => {
       </p>
     </article>
   );
+};
+
+CardEpisode.propTypes = {
+  data: PropTypes.object,
 };
 
 export default CardEpisode;
