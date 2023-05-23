@@ -9,7 +9,7 @@ const LayoutEpisode = ({ children }) => {
 };
 
 LayoutEpisode.propTypes = {
-  children: PropTypes.element.isRequired,
+  children: PropTypes.array,
 };
 
 export default LayoutEpisode;

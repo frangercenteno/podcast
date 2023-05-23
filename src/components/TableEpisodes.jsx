@@ -53,7 +53,7 @@ const TableEpisodes = ({ episodes, podcastId }) => {
 };
 
 TableEpisodes.propTypes = {
-  podcastId: PropTypes.number,
+  podcastId: PropTypes.string,
   episodes: PropTypes.arrayOf(Object),
 };
 

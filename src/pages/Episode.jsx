@@ -24,7 +24,7 @@ const Episode = () => {
         <audio controls className="w-full">
           <source
             src={episode.episodeUrl}
-            type={`${episode.episodeContentType}'/${episode.episodeFileExtension}`}
+            type={`${episode.episodeContentType}/${episode.episodeFileExtension}`}
           />
           Your browser does not support the audio element.
         </audio>
